@@ -23,16 +23,16 @@ public class App {
         List<Person> listPersons=new ArrayList<>();
         List<Subject> listSubjects=new ArrayList<>();
         List<Journal> listJournals=new ArrayList<>();
-        SaverToFile saverToFile =new SaverToFile();
+        
 
 //--------------Saver--------------
-        
-    private Saver saver;
+    SaverToBase saverToBase =new SaverToBase();    
+    //private Saver saver;
     
     public App() {
-        listPersons.addAll(saverToFile.loadListPersons());
-        listSubjects.addAll(saverToFile.loadListSubjects());
-        listJournals.addAll(saverToFile.loadListJournals());
+        listPersons.addAll(saverToBase.loadListPersons());
+        listSubjects.addAll(saverToBase.loadListSubjects());
+        listJournals.addAll(saverToBase.loadListJournals());
                 
     }
     
@@ -82,7 +82,7 @@ public class App {
                              System.out.println("Fail, person was not add");                         
                          }else{
                              listPersons.add(person);
-                             saverToFile.savePersons(listPersons);
+                             saverToBase.savePersons(listPersons);
                              System.out.println("Person was added.");
                          }
                        
@@ -96,7 +96,7 @@ public class App {
                              System.out.println("Fail, subject was not add");                         
                          }else{
                              listSubjects.add(subject);
-                             saverToFile.saveSubjects(listSubjects);
+                             saverToBase.saveSubjects(listSubjects);
                              System.out.println("Subject was added.");
                          }
                          
@@ -112,7 +112,7 @@ public class App {
                              System.out.println("Fail. Cannot add the grade");                         
                          }else{
                              listJournals.add(journal);
-                             saverToFile.saveJournals(listJournals);
+                             saverToBase.saveJournals(listJournals);
                              System.out.println("Grade was added");
                          }
                         
@@ -124,7 +124,7 @@ public class App {
                        
                         
                         journalProvider.changeGrade(listJournals);
-                        saverToFile.saveJournals(listJournals);
+                        saverToBase.saveJournals(listJournals);
                         
                         
                         break;

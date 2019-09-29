@@ -6,14 +6,25 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author N
+ * @author Nadia
  */
+@Entity
 public class Subject implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Basic()
     private String SubjectName;
+    @OneToOne
     private Person person; //Балда! надо было имя переменной учитель написать.
     private String Description;
 
@@ -64,10 +75,5 @@ public class Subject implements Serializable{
         return "Subject{" + "id=" + id + ", SubjectName=" + SubjectName + ", person=" + person + ", Description=" + Description + '}';
     }
 
-    public enum enumGrade{
-            Fail,
-            CouldBeBetter,
-            Good,
-            Exelent;
-        }    
+        
 }

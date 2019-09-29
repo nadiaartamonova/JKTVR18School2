@@ -2,21 +2,32 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Journal implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //@OneToOne
     private Person personPupil;
-    private Person personTeacher;
+   // @OneToOne
+    //private Person personTeacher;
+    //@OneToOne
     private Subject SubjectName;
     private int Grade;
 
     public Journal()  {
     }
 
-    public Journal(Long id, Person personPupil, Person personTeacher, Subject SubjectName, int Grade) {
+    public Journal(Long id, Person personPupil, Subject SubjectName, int Grade) {
         this.id = id;
         this.personPupil = personPupil;
-        this.personTeacher = personTeacher;
+        //this.personTeacher = personTeacher;
         this.SubjectName = SubjectName;
         this.Grade = Grade;
     }
@@ -37,13 +48,9 @@ public class Journal implements Serializable{
         this.personPupil = personPupil;
     }
 
-    public Person getPersonTeacher() {
-        return personTeacher;
-    }
+    
 
-    public void setPersonTeacher(Person personTeacher) {
-        this.personTeacher = personTeacher;
-    }
+    
 
     public Subject getSubjectName() {
         return SubjectName;
@@ -63,7 +70,7 @@ public class Journal implements Serializable{
 
     @Override
     public String toString() {
-        return "Journal{" + "id=" + id + ", personPupil=" + personPupil + ", personTeacher=" + personTeacher + ", SubjectName=" + SubjectName + ", Grade=" + Grade + '}';
+        return "Journal{" + "id=" + id + ", personPupil=" + personPupil + ", SubjectName=" + SubjectName + ", Grade=" + Grade + '}';
     }
     
 }
